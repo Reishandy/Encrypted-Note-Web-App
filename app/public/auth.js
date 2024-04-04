@@ -37,8 +37,7 @@ function authAnimation() {
     // Select the checkbox
     let checkbox = document.querySelector('#div-cover-chk');
 
-    // Select the h1, label, and form elements
-    let h1 = document.querySelector('.div-cover h1');
+    // Select the label, and form elements
     let label = document.querySelector('.div-cover label');
     let formSignIn = document.querySelector('.form-signIn');
     let formSignUp = document.querySelector('.form-signUp');
@@ -51,9 +50,7 @@ function authAnimation() {
 
     // Add an event listener to the checkbox
     checkbox.addEventListener('change', function () {
-        // Fade out the text and form
-        h1.style.opacity = '0';
-        label.style.opacity = '0';
+        // Fade out the form
         formSignIn.style.opacity = '0';
         formSignUp.style.opacity = '0';
 
@@ -83,10 +80,6 @@ function authAnimation() {
                 formSignUp.style.opacity = '0';
                 formSignUp.classList.add('form-disabled');
             }
-
-            // Fade in the text
-            h1.style.opacity = '1';
-            label.style.opacity = '1';
         }, 500); // The timeout should be the same as the transition duration
     });
 }
