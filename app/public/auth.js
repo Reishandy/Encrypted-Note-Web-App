@@ -66,7 +66,7 @@ function authAnimation() {
             // Check if the checkbox is checked
             if (checkbox.checked) {
                 // If checked, change the text of the label elements
-                label.textContent = 'Sign-in Instead';
+                label.textContent = 'Sign-in';
 
                 // Show the sign-up form and hide the sign-in form
                 formSignUp.style.opacity = '1';
@@ -75,7 +75,7 @@ function authAnimation() {
                 formSignIn.classList.add('form-disabled');
             } else {
                 // If not checked, reset the text of the label elements
-                label.textContent = 'Sign-up Instead';
+                label.textContent = 'Sign-up';
 
                 // Show the sign-in form and hide the sign-up form
                 formSignIn.style.opacity = '1';
