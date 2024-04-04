@@ -6,18 +6,17 @@ require_once __DIR__ . '/../encryption.php';
 /**
  * Return indicator (string) of the user addition status:
  *
- * - Error: Failed to connect to MySQL error message
+ * - Error: Failed to connect to Database error message
  * - "occupied": Username already exists
  * - "success": User added successfully
  */
-function add_user(string $username, string $password): string
+function sign_up(string $username, string $password): array
 {
     // Handle the database connection and errors
-    global $dbh;
     try {
         $dbh = new mysqli(DB_HOST, DB_USER, DB_PASS, DB_NAME);
     } catch (mysqli_sql_exception) {
-        return "Failed to connect to MySQL: " . $dbh->connect_error;
+        return ["status" => "error", "message" => "Failed to connect to Database"];
     }
 
     // Check if the user already exists
@@ -28,7 +27,7 @@ function add_user(string $username, string $password): string
     $result = $check_statement->get_result();
 
     if ($result->num_rows > 0) {
-        return "occupied";
+        return ["status" => "occupied", "message" => "Username already exists"];
     }
 
     // Create and encrypt the main key
@@ -58,25 +57,24 @@ function add_user(string $username, string $password): string
 
     $dbh->close();
 
-    return "success";
+    return ["status" => "sign_up_success", "message" => "User added successfully"];
 }
 
 /**
  * Return indicator (string) of the user retrieval status:
  *
- * - Error: Failed to connect to MySQL error message
+ * - Error: Failed to connect to Database error message
  * - "not_found": Username not found
  * - "incorrect_password": Incorrect password
  * - Main key: User's main key (success)
  */
-function get_user(string $username, string $password): string
+function sign_in(string $username, string $password): array
 {
     // Handle the database connection and errors
-    global $dbh;
     try {
         $dbh = new mysqli(DB_HOST, DB_USER, DB_PASS, DB_NAME);
     } catch (mysqli_sql_exception) {
-        return "Failed to connect to MySQL: " . $dbh->connect_error;
+        return ["status" => "error", "message" => "Failed to connect to Database"];
     }
 
     // Check if the user exists
@@ -87,7 +85,7 @@ function get_user(string $username, string $password): string
     $result = $check_statement->get_result();
 
     if ($result->num_rows === 0) {
-        return "not_found";
+        return ["status" => "not_found", "message" => "Username not found"];
     }
 
     // Get the user's data
@@ -99,9 +97,9 @@ function get_user(string $username, string $password): string
 
     // Verify the password
     if (!password_verify($password, $hashed_password)) {
-        return "incorrect_password";
+        return ["status" => "incorrect_password", "message" => "Incorrect password"];
     }
 
     // Return the decrypted main key
-    return decrypt_main_key($password, $encrypted_key, $salt, $iv);
+    return ["status" => "sign_in_success", "message" => decrypt_main_key($password, $encrypted_key, $salt, $iv)];
 }

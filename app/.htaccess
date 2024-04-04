@@ -1,0 +1,11 @@
+php_value display_errors On
+php_value mbstring.http_input auto
+php_value date.timezone Asia/Jakarta
+Options -Indexes
+RewriteEngine On
+RewriteRule ^public/ - [L]
+RewriteRule ^logic/ - [F]
+RewriteRule ^\.htaccess$ - [F]
+<Files "config.json">
+    Require all denied
+</Files>

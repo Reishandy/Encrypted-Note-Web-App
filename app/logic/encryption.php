@@ -44,8 +44,3 @@ function decrypt_main_key(string $password, string $encrypted_key, string $salt,
     $user_key = hash_pbkdf2("sha3-256", $password, $salt, 100000, 32);
     return decrypt($encrypted_key, $user_key, $iv);
 }
-
-// test
-$password = "password";
-$encrypted = encrypt_main_key($password);
-$decrypted = decrypt_main_key($password, $encrypted["key"], $encrypted["salt"], $encrypted["iv"]);

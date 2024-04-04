@@ -19,7 +19,18 @@
         <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;500;700&display=swap" rel="stylesheet">
     </head>
     <body>
+        <div id="error-message" class="alert alert-danger alert-dismissible fade show" role="alert">
+            <span id="error-content"></span>
+            <button id="error-close" type="button" class="btn-close" aria-label="Close"></button>
+        </div>
+
+        <div id="success-message" class="alert alert-success alert-dismissible fade show" role="alert">
+            <span id="success-content"></span>
+            <button id="success-close" type="button" class="btn-close" aria-label="Close"></button>
+        </div>
+
         <div class="d-flex justify-content-center align-items-center div-parent">
+
             <input type="checkbox" id="div-cover-chk" aria-hidden="true">
 
             <div class="d-flex justify-content-center align-items-center div-cover">
@@ -32,33 +43,40 @@
                 <div class="col p-5 div-form">
                     <form class="form-signIn needs-validation" novalidate>
                         <h1 class="roboto-bold">SIGN-IN</h1>
+                        <input type="hidden" name="type" value="sign-in">
 
                         <div class="form-group">
-                            <input type="text" class="form-control form-control-lg" id="unameSi"
-                                   placeholder="Enter Username" required>
+                            <input type="text" class="form-control form-control-lg" id="unameSi" name="username"
+                                   placeholder="Enter Username" pattern="[a-zA-Z0-9_]+"
+                                   required>
                             <div class="invalid-feedback">
-                                Please enter a username.
+                                Please enter a valid username.
                             </div>
                         </div>
 
                         <div class="form-group">
-                            <input type="password" class="form-control form-control-lg" id="passwdSi"
+                            <input type="password" class="form-control form-control-lg" id="passwdSi" name="password"
                                    placeholder="Enter Password" required>
                             <div class="invalid-feedback">
                                 Please enter a password.
                             </div>
                         </div>
 
-                        <button type="submit" class="btn btn-outline-light btn-lg">Sign-In</button>
+                        <button type="submit" class="btn btn-outline-light btn-lg">
+                            Sign-In
+                            <span class="spinner-border spinner-border-sm" role="status" aria-hidden="true"
+                                  style="display: none;"></span>
+                        </button>
                     </form>
                 </div>
 
                 <div class="col p-5 div-form">
-                    <form id="form-signUp" class="form-signUp needs-validation" novalidate>
+                    <form id="form-re" class="form-signUp needs-validation" novalidate>
                         <h1 class="roboto-bold">SIGN-UP</h1>
+                        <input type="hidden" name="type" value="sign-up">
 
                         <div class="form-group">
-                            <input type="text" class="form-control form-control-lg" id="unameSu"
+                            <input type="text" class="form-control form-control-lg" id="unameSu" name="username"
                                    aria-describedby="unameSiHelp" placeholder="Enter Username" pattern="[a-zA-Z0-9_]+"
                                    required>
                             <div class="invalid-feedback">
@@ -70,7 +88,7 @@
                         </div>
 
                         <div class="form-group">
-                            <input type="password" class="form-control form-control-lg" id="passwdSu"
+                            <input type="password" class="form-control form-control-lg" id="passwdSu" name="password"
                                    placeholder="Enter Password" required>
                             <div class="invalid-feedback">
                                 Please enter a password.
@@ -83,12 +101,17 @@
                             </div>
                         </div>
 
-                        <button type="submit" class="btn btn-outline-light btn-lg">Sign-Up</button>
+                        <button type="submit" class="btn btn-outline-light btn-lg">
+                            Sign-Up
+                            <span class="spinner-border spinner-border-sm" role="status" aria-hidden="true"
+                                  style="display: none;"></span>
+                        </button>
                     </form>
                 </div>
             </div>
         </div>
     </body>
+
     <!-- Script -->
     <script src="auth.js"></script>
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"

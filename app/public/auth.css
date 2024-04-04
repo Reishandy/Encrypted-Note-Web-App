@@ -25,6 +25,15 @@ body {
     background-color: #181A1B;
 }
 
+#error-message {
+    display: none;
+}
+
+#success-message {
+    display: none;
+}
+
+/* Divs */
 .div-parent {
     margin: 8%;
     width: 85%;
@@ -49,6 +58,7 @@ body {
 }
 
 .div-form input {
+    color: white;
     background-color: #181A1B;
     border-color: #181A1B;
     margin-top: 1vw;
