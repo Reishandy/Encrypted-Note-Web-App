@@ -1,0 +1,148 @@
+/* Font */
+.roboto-medium {
+    font-family: "Roboto", sans-serif;
+    font-weight: 500;
+    font-style: normal;
+    color: white;
+}
+
+.roboto-bold {
+    font-family: "Roboto", sans-serif;
+    font-weight: 700;
+    font-style: normal;
+    color: white;
+}
+
+.roboto-thin {
+    font-family: "Roboto", sans-serif;
+    font-weight: 100;
+    font-style: normal;
+    color: white;
+}
+
+/* Native */
+body {
+    background-color: #181A1B;
+}
+
+.div-parent {
+    margin: 8%;
+    width: 85%;
+    height: 100%;
+}
+
+.div-container {
+    height: 70vh;
+    width: 70vw;
+}
+
+.div-form {
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    background-color: #494F52;
+}
+
+.div-form h1 {
+    font-size: 5vw;
+    margin-bottom: 2vw;
+}
+
+.div-form input {
+    background-color: #181A1B;
+    border-color: #181A1B;
+    margin-top: 1vw;
+}
+
+.div-form small {
+    font-size: 1vw;
+}
+
+.div-form button {
+    margin-top: 2vw;
+}
+
+.form-signIn {
+    transition: opacity 200ms ease-in-out;
+    opacity: 1;
+}
+
+.form-signUp {
+    transition: opacity 200ms ease-in-out;
+    opacity: 1;
+}
+
+.form-disabled {
+    pointer-events: none;
+    opacity: 0;
+}
+
+/* Cover */
+.div-cover {
+    background-color: #1C1E1F;
+    position: absolute;
+    flex-direction: column;
+    width: 35%;
+    height: 70%;
+    transform: translateX(50%);
+    transition: transform 700ms ease-in-out;
+}
+
+.div-cover h1 {
+    font-size: 5vw;
+}
+
+#div-cover-chk {
+    display: none;
+}
+
+#div-cover-chk:checked ~ .div-cover {
+    transform: translateX(-50%);
+}
+
+@media (max-width: 500px) {
+    .div-cover {
+        width: 70%;
+        height: 100vw;
+        transform: translateY(50%);
+    }
+
+    #div-cover-chk:checked ~ .div-cover {
+        transform: translateY(-50%);
+        height: 80vw;
+    }
+
+    .div-cover h1 {
+        font-size: 10vw;
+    }
+
+    .div-parent {
+        margin-bottom: 68%;
+    }
+
+    .div-form {
+        flex: 1;
+    }
+
+    .div-form h1 {
+        font-size: 7vw;
+        margin-bottom: 4vw;
+    }
+
+    .div-form input {
+        margin-top: 2vw;
+    }
+
+    .div-form small {
+        font-size: 2.3vw;
+    }
+
+    .div-form button {
+        margin-top: 4vw;
+    }
+
+    .div-form label {
+        font-size: 4vw;
+        margin-bottom: 2vw;
+    }
+}

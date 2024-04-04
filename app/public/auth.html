@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport"
+              content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+        <meta http-equiv="X-UA-Compatible" content="ie=chrome">
+        <title>Note App</title>
+
+        <!-- Styles -->
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+              integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC"
+              crossorigin="anonymous">
+        <link rel="stylesheet" href="auth.css">
+
+        <!-- Fonts -->
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;500;700&display=swap" rel="stylesheet">
+    </head>
+    <body>
+        <div class="d-flex justify-content-center align-items-center div-parent">
+            <input type="checkbox" id="div-cover-chk" aria-hidden="true">
+
+            <div class="d-flex justify-content-center align-items-center div-cover">
+                <h1 class="roboto-bold">NOTE APP</h1>
+
+                <label for="div-cover-chk" class="roboto-thin">Sign-up Instead</label>
+            </div>
+
+            <div class="row shadow-lg text-center div-container">
+                <div class="col p-5 div-form">
+                    <form class="form-signIn needs-validation" novalidate>
+                        <h1 class="roboto-bold">SIGN-IN</h1>
+
+                        <div class="form-group">
+                            <input type="text" class="form-control form-control-lg" id="unameSi"
+                                   placeholder="Enter Username" required>
+                            <div class="invalid-feedback">
+                                Please enter a username.
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <input type="password" class="form-control form-control-lg" id="passwdSi"
+                                   placeholder="Enter Password" required>
+                            <div class="invalid-feedback">
+                                Please enter a password.
+                            </div>
+                        </div>
+
+                        <button type="submit" class="btn btn-outline-light btn-lg">Sign-In</button>
+                    </form>
+                </div>
+
+                <div class="col p-5 div-form">
+                    <form id="form-signUp" class="form-signUp needs-validation" novalidate>
+                        <h1 class="roboto-bold">SIGN-UP</h1>
+
+                        <div class="form-group">
+                            <input type="text" class="form-control form-control-lg" id="unameSu"
+                                   aria-describedby="unameSiHelp" placeholder="Enter Username" pattern="[a-zA-Z0-9_]+"
+                                   required>
+                            <div class="invalid-feedback">
+                                Please enter a valid username.
+                            </div>
+                            <small id="unameSuHelp" class="form-text roboto-thin">
+                                Username can only contain letters, numbers, and underscores.
+                            </small>
+                        </div>
+
+                        <div class="form-group">
+                            <input type="password" class="form-control form-control-lg" id="passwdSu"
+                                   placeholder="Enter Password" required>
+                            <div class="invalid-feedback">
+                                Please enter a password.
+                            </div>
+
+                            <input type="password" class="form-control form-control-lg" id="passwdReSu"
+                                   placeholder="Re-Enter Password" required>
+                            <div class="invalid-feedback">
+                                Password do not match.
+                            </div>
+                        </div>
+
+                        <button type="submit" class="btn btn-outline-light btn-lg">Sign-Up</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </body>
+    <!-- Script -->
+    <script src="auth.js"></script>
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+            integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+            crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.14.3/dist/umd/popper.min.js"
+            integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49"
+            crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.1.3/dist/js/bootstrap.min.js"
+            integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy"
+            crossorigin="anonymous"></script>
+</html>
