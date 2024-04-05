@@ -40,7 +40,7 @@ function validatePasswordReEntry(form) {
     }
 }
 
-function sendFormData(form) {
+async function sendFormData(form) {
     let formData = new FormData(form);
 
     // Spinner setup
@@ -49,42 +49,38 @@ function sendFormData(form) {
     spinner.style.display = 'inline-block';
     button.disabled = true;
 
-    fetch('../logic/handler.php', {
-        method: 'POST',
-        body: formData
-    })
-        .then(response => response.json())
-        .then(data => {
-            // Spinner cleanup
-            spinner.style.display = 'none';
-            button.disabled = false;
-
-            // Check if the request was successful, else show an error message
-            if (data.status === 'sign_in_success') {
-                console.log(data)
-                alert(data.message)
-                // TODO: Set up session stuff
-                // TODO: Redirect to the notes page
-            } else if (data.status === 'sign_up_success') {
-                // Display the success message
-                displaySuccess(data.message);
-
-                // Reset the form
-                form.reset();
-
-                // Reset the form validation
-                form.classList.remove('was-validated');
-            } else {
-                displayError(data.message)
-            }
-        })
-        .catch((error) => {
-            // Spinner cleanup
-            spinner.style.display = 'none';
-            button.disabled = false;
-
-            displayError('An error occurred. Please try again later. \n Error: ' + error.message);
+    try {
+        let response = await fetch('../../logic/handler.php', {
+            method: 'POST',
+            body: formData
         });
+        let data = await response.json();
+
+        // Spinner cleanup
+        spinner.style.display = 'none';
+        button.disabled = false;
+
+        // Response handling
+        if (data.status === 'sign_in_success') {
+            // Go to the app page
+            window.location.href = '../app/app.html';
+        } else if (data.status === 'sign_up_success') {
+            // Display the success message
+            displaySuccess(data.message);
+
+            // Reset the form and validation
+            form.reset();
+            form.classList.remove('was-validated');
+        } else {
+            displayError(data.message)
+        }
+    } catch (error) {
+        // Spinner cleanup if an error occurs
+        spinner.style.display = 'none';
+        button.disabled = false;
+
+        displayError('An error occurred. Please try again later.');
+    }
 }
 
 function displaySuccess(message) {
@@ -147,7 +143,7 @@ function authAnimation() {
                 formSignUp.style.opacity = '0';
                 formSignUp.classList.add('form-disabled');
             }
-        }, 500); // The timeout should be the same as the transition duration
+        }, 700); // The timeout should be the same as the transition duration
     });
 }
 

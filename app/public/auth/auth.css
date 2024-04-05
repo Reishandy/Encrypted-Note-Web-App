@@ -25,12 +25,14 @@ body {
     background-color: #181A1B;
 }
 
-#error-message {
+#error-message, #success-message {
     display: none;
-}
 
-#success-message {
-    display: none;
+    position: absolute;
+    top: 5%;
+    left: 50%;
+    transform: translateX(-45%);
+    z-index: 1000;
 }
 
 /* Divs */
@@ -53,7 +55,7 @@ body {
 }
 
 .div-form h1 {
-    font-size: 5vw;
+    font-size: 3vw;
     margin-bottom: 2vw;
 }
 
@@ -72,12 +74,7 @@ body {
     margin-top: 2vw;
 }
 
-.form-signIn {
-    transition: opacity 200ms ease-in-out;
-    opacity: 1;
-}
-
-.form-signUp {
+.form-signIn, .form-signUp {
     transition: opacity 200ms ease-in-out;
     opacity: 1;
 }

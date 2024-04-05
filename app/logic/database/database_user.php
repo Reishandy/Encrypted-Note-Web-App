@@ -101,5 +101,5 @@ function sign_in(string $username, string $password): array
     }
 
     // Return the decrypted main key
-    return ["status" => "sign_in_success", "message" => decrypt_main_key($password, $encrypted_key, $salt, $iv)];
+    return ["status" => "sign_in_success", "message" => "Signed-in successfully", "key" => decrypt_main_key($password, $encrypted_key, $salt, $iv)];
 }
