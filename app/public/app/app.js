@@ -103,6 +103,7 @@ function callModalSignOut() {
     modalBtn.onclick = function () {
         signOut();
     };
+    modalBtn.textContent = 'Sign Out';
 
     let utilModal = new bootstrap.Modal(document.getElementById('util-modal'));
     utilModal.show();
@@ -146,7 +147,6 @@ function callModalEdit(noteId, noteTitle, noteContent) {
 
     modalTitle.value = noteTitle;
     modalContent.value = noteContent;
-
     modalBtn.onclick = function () {
         updateNote(noteId, modalTitle.value, modalContent.value);
     }
