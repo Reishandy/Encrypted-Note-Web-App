@@ -3,13 +3,6 @@
 require_once __DIR__ . '/../config.php';
 require_once __DIR__ . '/../encryption.php';
 
-/**
- * Return indicator (string) of the user addition status:
- *
- * - Error: Failed to connect to Database error message
- * - "occupied": Username already exists
- * - "success": User added successfully
- */
 function sign_up(string $username, string $password): array
 {
     // Handle the database connection and errors
@@ -50,7 +43,8 @@ function sign_up(string $username, string $password): array
         id INT(11) AUTO_INCREMENT PRIMARY KEY,
         date_created TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
         date_modified TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
-        data TEXT NOT NULL,
+        title VARCHAR(255) NOT NULL,
+        note TEXT NOT NULL,
         iv VARCHAR(24) NOT NULL
     )");
     $table_statement->execute();
@@ -60,14 +54,6 @@ function sign_up(string $username, string $password): array
     return ["status" => "sign_up_success", "message" => "User added successfully"];
 }
 
-/**
- * Return indicator (string) of the user retrieval status:
- *
- * - Error: Failed to connect to Database error message
- * - "not_found": Username not found
- * - "incorrect_password": Incorrect password
- * - Main key: User's main key (success)
- */
 function sign_in(string $username, string $password): array
 {
     // Handle the database connection and errors

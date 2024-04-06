@@ -1,0 +1,151 @@
+/* Scroll bar */
+::-webkit-scrollbar {
+    width: 10px; /* Width of the vertical scrollbar */
+    height: 10px; /* Height of the horizontal scrollbar */
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+    background: #494F52; /* Color of the scroll thumb */
+    border-radius: 5px; /* Radius for the scroll thumb */
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+    background: #181A1B; /* Color of the track */
+    border-radius: 5px; /* Radius for the track */
+}
+
+/* Add this to make the scrollbar disappear when not in use */
+::-webkit-scrollbar-thumb {
+    background: #494F52; /* Same as above */
+    border-radius: 5px; /* Same as above */
+    transition: background 0.1s ease-in-out; /* Add transition */
+}
+
+
+/* Font */
+.roboto-medium {
+    font-family: "Roboto", sans-serif;
+    font-weight: 500;
+    font-style: normal;
+    color: white;
+}
+
+.roboto-bold {
+    font-family: "Roboto", sans-serif;
+    font-weight: 700;
+    font-style: normal;
+    color: white;
+}
+
+.roboto-thin {
+    font-family: "Roboto", sans-serif;
+    font-weight: 100;
+    font-style: normal;
+    color: white;
+}
+
+/* Native */
+body {
+    background-color: #181A1B;
+}
+
+/* Navbar */
+.navbar {
+    background-color: #494F52 !important;
+}
+
+.navbar-brand {
+    font-size: 35px;
+    margin-left: 1vw;
+}
+
+.navbar .btn {
+    margin-right: 1vw;
+}
+
+/* Note */
+.note-add-button {
+    border: none;
+
+    transition: opacity 500ms, transform 500ms;
+}
+
+.note {
+    padding: 20px;
+    border-radius: 10px;
+    background-color: #494F52;
+
+    transition: opacity 500ms, transform 500ms;
+}
+
+.note-hidden {
+    opacity: 0;
+    transform: scale(0.95);
+}
+
+.note h2 {
+    height: 35px;
+    white-space: normal;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.note p {
+    height: 150px;
+    white-space: normal;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+/* Modal */
+.modal-content {
+    padding: 10px;
+    background-color: #494F52;
+    color: white;
+}
+
+.modal-footer, .modal-header {
+    border: none;
+    display: flex;
+    justify-content: space-between;
+}
+
+.close {
+    background-color: #494F52;
+    color: white;
+    border: none;
+}
+
+#add-modal .modal-dialog,
+#edit-modal .modal-dialog,
+#view-modal .modal-dialog {
+    max-width: 70vw;
+}
+
+.modal input {
+    background-color: #494F52;
+    color: white;
+    border: none;
+    font-size: 1.5rem;
+    padding: 1rem;
+
+}
+
+.modal textarea {
+    background-color: #494F52;
+    color: white;
+    border: none;
+    font-size: 1rem;
+    padding: 1rem;
+}
+
+.modal input:focus, .modal textarea:focus {
+    background-color: #494F52;
+    color: white
+}
+
+.modal input::placeholder, .modal textarea::placeholder {
+    color: gainsboro;
+}

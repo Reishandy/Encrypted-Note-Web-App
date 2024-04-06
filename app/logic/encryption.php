@@ -38,9 +38,6 @@ function encrypt_main_key(string $password): array
 
 function decrypt_main_key(string $password, string $encrypted_key, string $salt, string $iv): false|string
 {
-    $salt = base64_decode($salt);
-    $iv = base64_decode($iv);
-
-    $user_key = hash_pbkdf2("sha3-256", $password, $salt, 100000, 32);
-    return decrypt($encrypted_key, $user_key, $iv);
+    $user_key = hash_pbkdf2("sha3-256", $password, base64_decode($salt), 100000, 32);
+    return decrypt($encrypted_key, $user_key, base64_decode($iv));
 }

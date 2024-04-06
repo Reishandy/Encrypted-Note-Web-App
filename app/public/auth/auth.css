@@ -66,6 +66,15 @@ body {
     margin-top: 1vw;
 }
 
+.div-form input:focus, .modal textarea:focus {
+    background-color: #181A1B;
+    color: white
+}
+
+.div-form input::placeholder, .modal textarea::placeholder {
+    color: gainsboro;
+}
+
 .div-form small {
     font-size: 1vw;
 }
@@ -107,7 +116,7 @@ body {
     transform: translateX(-50%);
 }
 
-@media (max-width: 500px) {
+@media (max-width: 590px) {
     .div-cover {
         width: 70%;
         height: 100vw;

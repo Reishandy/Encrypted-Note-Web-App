@@ -99,6 +99,22 @@ function displayError(message) {
     errorMessageBox.style.display = 'block';
 }
 
+function closeAlertListener() {
+    // Add an event listener to the close button, hide the error message when clicked instead of removing it
+    let errorButton = document.getElementById('error-close');
+    errorButton.addEventListener('click', function () {
+        let errorMessageBox = document.getElementById('error-message');
+        errorMessageBox.style.display = 'none';
+    });
+
+    // Add an event listener to the close button, hide the success message when clicked instead of removing it
+    let successButton = document.getElementById('success-close');
+    successButton.addEventListener('click', function () {
+        let successMessageBox = document.getElementById('success-message');
+        successMessageBox.style.display = 'none';
+    });
+}
+
 function authAnimation() {
     let checkbox = document.querySelector('#div-cover-chk');
 
@@ -114,6 +130,7 @@ function authAnimation() {
     // Add an event listener to the checkbox
     checkbox.addEventListener('change', function () {
         // Fade out the form
+        label.style.opacity = '0';
         formSignIn.style.opacity = '0';
         formSignUp.style.opacity = '0';
 
@@ -127,38 +144,28 @@ function authAnimation() {
             if (checkbox.checked) {
                 // If checked, change the text of the label elements
                 label.textContent = 'Sign-in';
+                label.style.opacity = '1';
 
                 // Show the sign-up form and hide the sign-in form
                 formSignUp.style.opacity = '1';
                 formSignUp.classList.remove('form-disabled');
                 formSignIn.style.opacity = '0';
+                formSignIn.reset();
+                formSignIn.classList.remove('was-validated');
                 formSignIn.classList.add('form-disabled');
             } else {
                 // If not checked, reset the text of the label elements
                 label.textContent = 'Sign-up';
+                label.style.opacity = '1';
 
                 // Show the sign-in form and hide the sign-up form
                 formSignIn.style.opacity = '1';
                 formSignIn.classList.remove('form-disabled');
                 formSignUp.style.opacity = '0';
+                formSignUp.reset();
+                formSignUp.classList.remove('was-validated');
                 formSignUp.classList.add('form-disabled');
             }
         }, 700); // The timeout should be the same as the transition duration
-    });
-}
-
-function closeAlertListener() {
-    // Add an event listener to the close button, hide the error message when clicked instead of removing it
-    let errorButton = document.getElementById('error-close');
-    errorButton.addEventListener('click', function () {
-        let errorMessageBox = document.getElementById('error-message');
-        errorMessageBox.style.display = 'none';
-    });
-
-    // Add an event listener to the close button, hide the success message when clicked instead of removing it
-    let successButton = document.getElementById('success-close');
-    successButton.addEventListener('click', function () {
-        let successMessageBox = document.getElementById('success-message');
-        successMessageBox.style.display = 'none';
     });
 }
