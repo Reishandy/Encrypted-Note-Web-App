@@ -88,7 +88,7 @@ function sign_up_handler(): void
     $password = filter_var($_POST["password"], FILTER_SANITIZE_STRING);
 
     // Additional validation using regex [a-zA-Z0-9_]+
-    if (!preg_match("/^[a-zA-Z0-9_]+$/", $username)) {
+    if (!preg_match("/^[a-zA-Z0-9_]+$/", $username) or $username === "users") {
         header("Content-Type: application/json");
         echo json_encode(["status" => "error", "message" => "Invalid username"]);
         return;
