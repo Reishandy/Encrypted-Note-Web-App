@@ -408,3 +408,9 @@ editModal.addEventListener('shown.bs.modal', function () {
     let textarea = this.querySelector('textarea');
     textarea.dispatchEvent(new Event('input'));
 });
+
+let addModal = document.getElementById('add-modal');
+addModal.addEventListener('shown.bs.modal', function () {
+    let textarea = this.querySelector('textarea');
+    textarea.dispatchEvent(new Event('input'));
+});
